@@ -15,7 +15,7 @@ app.use(
  });
 
 /** * All routes ***/
-//app.get('/final-ideas/getAllIdeas', ideaCtl.getData);
+app.get('/final-ideas/getAllIdeas', ideaCtl.getData);
 // app.get('/final-ideas/saveNewIdea', ideaCtl.saveData);
 // app.get('/final-ideas/updateIdea', ideaCtl.updateData);
 // app.get('/final-ideas/deleteIdea', ideaCtl.deleteData);
