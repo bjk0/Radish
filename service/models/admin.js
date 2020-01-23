@@ -8,6 +8,6 @@ const admin = {
 };
 
 const adminSchema = new mongoose.Schema(admin);
-const Admin = mongoose.model('Product', adminSchema);
+const Admin = mongoose.model('Admin', adminSchema);
 
 module.exports = Admin;

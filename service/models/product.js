@@ -3,9 +3,9 @@ const product = {
     id : {type: Number, index: 1 },
     title : String,
     imageName : String,
-    price : {type: Number},
-    acquired:{type: Number},
-    popularity:{type: Number}
+    price :  Number,
+    acquired: Number,
+    popularity: Number
 };
 
 const productSchema = new mongoose.Schema(product);
