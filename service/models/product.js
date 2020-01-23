@@ -4,8 +4,8 @@ const product = {
     title : String,
     imageName : String,
     price :  Number,
-    acquired: Number,
-    popularity: Number
+    acquired: [String],//////// change to date in DB
+    popularityIndex: Number
 };
 
 const productSchema = new mongoose.Schema(product);

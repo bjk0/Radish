@@ -12,12 +12,13 @@ const userProduct = new Schema({
       type: [String]
     }
   });
-  
+   
   const user = new Schema({
     userName: String,
     email: String,
     password: String,
-    userProduct: [userProduct]
+    userProduct: [userProduct],
+    userCartHistory:[Number]
   });
 
 const userSchema = new mongoose.Schema(user);
