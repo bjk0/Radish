@@ -17,8 +17,8 @@ const userProduct = new Schema({
     userName: String,
     email: String,
     password: String,
-    userProduct: [userProduct],
-    userCartHistory:[Number]
+    userCartHistory:[Number],
+    userProduct: [userProduct]
   });
 
 const userSchema = new mongoose.Schema(user);
