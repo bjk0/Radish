@@ -1,2 +1,27 @@
-flow1
-Admin ...
+Flow 1
+			CRUD on Pruduct Collection.
+Admin :
+			GraphView <- filterByDate<-(sort <- Product dates));
+
+
+Flow 2
+
+			Login + Sign Up system! 
+			CRUD on User Collection + userProduct.
+			New Collection in db cart. // model schema is done
+
+
+User: 		getUserProduct();
+			algo();
+			updateUserProduct();
+			cart <- sort();
+			//adding new product to cart//
+			CRUD on pruducts in cart
+
+			//favorites//
+		set algRating to P10; //algorithm never changes 10, view puts star if algRating == 10
+			//
+Flow 3 
+			
+			Add to UserProduct list <- find potato in AllProducts;
+
