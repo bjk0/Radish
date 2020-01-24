@@ -2,6 +2,8 @@ const express = require('express');
 const productCtl = require('./controllers/product_ctrl');
 const adminCtl = require('./controllers/admin_ctrl');
 const userCtl = require('./controllers/user_ctrl');
+const crtCtl = require('./controllers/cart_ctrl');
+
 
 const app = express();
 const port = process.env.PORT || 3001;//client on 3000
@@ -23,6 +25,7 @@ app.use(
    app.get('/radish/prod/get', productCtl.getData);
    app.get('/radish/admins', adminCtl.getData);
    app.get('/radish/users', userCtl.getData);
+   app.get('/radish/carts', cartCtl.getData);
 
 // app.get('/final-ideas/saveNewIdea', ideaCtl.saveData);
 // app.get('/final-ideas/updateIdea', ideaCtl.updateData);

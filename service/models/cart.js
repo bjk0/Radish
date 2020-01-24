@@ -3,7 +3,7 @@
 const mongoose = require('mongoose');
 const cart = {
     id : {type: Number, index: 1 },
-    product : [Number],
+    productId : [Number],
     state : Number,
     date:  String
 };

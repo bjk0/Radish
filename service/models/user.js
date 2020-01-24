@@ -12,7 +12,7 @@ const userProduct = new Schema({
       type: [String]
     }
   });
-   
+   //edit DB => add user cart history
   const user = new Schema({
     userName: String,
     email: String,
