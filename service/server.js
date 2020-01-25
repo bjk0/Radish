@@ -1,13 +1,13 @@
 const express = require('express');
-//const productCtl = require('./controllers/product_ctrl');
-//const adminCtl = require('./controllers/admin_ctrl');
-//const userCtl = require('./controllers/user_ctrl');
-//const crtCtl = require('./controllers/cart_ctrl');
+const session = require('express-session');
+const bodyParser = require('body-parser');
+const path = require('path');
+
 const user_route = require('./routers/userRoute');
 const cart_route = require('./routers/cartRoute');
 const prod_route = require('./routers/prodRoute');
 const admin_route = require('./routers/adminRoute');
-
+const login = require('./login')
 
 
 const app = express();
@@ -27,10 +27,11 @@ app.use(
 
  
 /** * All routes ***/
-  app.use('/radish/users',user_route);   
-  app.use('/radish/carts',cart_route);
-  app.use('/radish/prod',prod_route);
-  app.use('/radish/admins',admin_route);
+  app.use('/users',user_route);   
+  app.use('/carts',cart_route);
+  app.use('/prod',prod_route);
+  app.use('/admins',admin_route);
+  app.use('/',login);
  
 
 

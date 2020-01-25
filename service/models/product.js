@@ -4,7 +4,7 @@ const product = {
     title : String,
     imageName : String,
     price :  Number,
-    acquired: [String],//////// change to date in DB
+    acquired: [String],
     popularityIndex: Number
 };
 

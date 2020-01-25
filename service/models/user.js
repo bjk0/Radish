@@ -2,20 +2,14 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const userProduct = new Schema({
-    prodId: {
-      type: Number
-    },
-    algRating: {
-      type: Number
-    },
-    date: {
-      type: [String]
-    }
+    prodId: Number,
+    algRating:Number,
+    date:[String]
   });
-   //edit DB => add user cart history
+   
   const user = new Schema({
     userName: String,
-    email: String,
+    email: {type: String, require: true },
     password: String,
     userCartHistory:[Number],
     userProduct: [userProduct]
