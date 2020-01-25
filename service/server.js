@@ -7,7 +7,7 @@ const user_route = require('./routers/userRoute');
 const cart_route = require('./routers/cartRoute');
 const prod_route = require('./routers/prodRoute');
 const admin_route = require('./routers/adminRoute');
-const login = require('./login')
+// const login = require('./login')
 
 
 const app = express();
@@ -23,6 +23,8 @@ app.use(
    res.set('Content-Type', 'application/json');
    next();
  });
+app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.json());
 
 
  
@@ -31,7 +33,7 @@ app.use(
   app.use('/carts',cart_route);
   app.use('/prod',prod_route);
   app.use('/admins',admin_route);
-  app.use('/',login);
+  // app.use('/login',login);
  
 
 

@@ -1,6 +1,5 @@
 var express = require('express');
-var session = require('express-session');
-var bodyParser = require('body-parser');
+
 var path = require('path');
 var app = express();
 const router = require('express').Router();
@@ -11,20 +10,25 @@ app.use(session({
 	resave: true,
 	saveUninitialized: true
 }));
-app.use(bodyParser.urlencoded({extended : true}));
+app.use(bodyParser.urlencoded({extended : false}));
 app.use(bodyParser.json());
 
+console.log("loginSucc");
 
-app.post('/login', async(request, response)=> {
-	var username = request.body.username;
-	var password = request.body.password;
+app.post('/login', (request, response)=> {
+	var username = request.body.userName;
+    var password = request.body.password;
+    console.log("loginSucc");
+
 	if (username && password) {
-        const docs = await User.find({username : req.params.user,
-                                     password: req.params.password},
+        const docs =  User.find({userName : request.body.userName,
+                                     password: request.body.password},
                                     (err)=>{if(err) throw err;});
          if (docs.length > 0){
                 request.session.loggedin = true;
                 request.session.username = username;
+                response.redirect('/home');
+                console.log("loginSucc");
             } else {
 				response.send('Incorrect Username and/or Password!');
 			}		
