@@ -1,14 +1,11 @@
-Flow 1
-			CRUD on Pruduct Collection.
-Admin :
+
 			GraphView <- filterByDate<-(sort <- Product dates));
 
+Create for carts
 
-Flow 2
 
 			Login + Sign Up system! 
-			CRUD on User Collection + userProduct.
-			New Collection in db cart. // model schema is done
+			CRUD on User Collection + push and delete userProduct.
 
 
 User: 		getUserProduct();

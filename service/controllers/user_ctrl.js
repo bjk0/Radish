@@ -37,7 +37,7 @@ exports.Login = async (req, res) => {
           message: "Incorrect Password! " + user.password + "  " + password
         });}else{
         return res.status(200).json({
-            message: "You are logged in!"
+            message: "You are logged in!" // Add redirect
           });
         }
         }
