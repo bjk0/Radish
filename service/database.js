@@ -8,7 +8,7 @@ const options = {
  useCreateIndex: true, // For deprecation warnings
  user: DB_USER,
  pass: DB_PASS,
- autoReconnect: true,
+ useUnifiedTopology: true
 };
 
 mongoose

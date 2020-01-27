@@ -9,7 +9,7 @@ exports.getData = async (req, res) => {
     } 
 };
 
-   exports.getByID = async (req, res) =>  {
+exports.getByID = async (req, res) =>  {
     try {
     const docs = await Product.find({id : req.params.id}, (err)=>{
         if(err) throw err;
@@ -58,7 +58,7 @@ exports.putProduct = async (req, res) => {
         });
 
         if(obj.length == 0) throw {
-            message:   'no content' +req.params.id
+            message:   'no content' 
         };
 
         obj = obj[0];

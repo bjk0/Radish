@@ -1,6 +1,6 @@
 const User = require('../models/user');
 var bodyParser = require('body-parser');
-const { check, validationResult } = require("express-validator/check");
+const { check, validationResult } = require("express-validator");
 const bcrypt = require("bcryptjs");
 
 exports.getData = async (req, res) => {
@@ -12,6 +12,22 @@ exports.getData = async (req, res) => {
        console.log(`query error: ${err}`);
     }  
 };
+
+exports.getByEmail = async (req, res) =>  {
+  try {
+  const docs = await User.find({email : req.params.email}, (err)=>{
+      if(err) throw err;
+  });
+    
+  if(docs.length == 0) throw {
+      message: 'no content'
+  };
+  res.status(200).json(docs[0]);
+  }catch(err){
+   res.status(500).send(err);
+} 
+};
+
 
 
 exports.Login = async (req, res) => {
