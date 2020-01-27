@@ -60,9 +60,7 @@ exports.putProduct = async (req, res) => {
         if(obj.length == 0) throw {
             message:   'no content' 
         };
-
         obj = obj[0];
-
         if(req.body.title)
             obj.title = req.body.title;
 
