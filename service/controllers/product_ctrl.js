@@ -1,4 +1,6 @@
 const Product = require('../models/product');
+const dateGenerate = require('../createDate');
+
 
 exports.getData = async (req, res) => {
     try {
@@ -96,9 +98,9 @@ exports.deleteProduct = async(req, res) =>{
     }
 }
 
-exports.addDate = async(req, res) =>{
+exports.addDate = async(req) =>{
     try{
-        let obj = await Product.find({id : req.params.id}, (err) =>{
+        let obj = await Product.find({id : req}, (err) =>{
             if(err) throw err;
         });
 
@@ -108,33 +110,17 @@ exports.addDate = async(req, res) =>{
         obj = obj[0];
 
 
+      var today = dateGenerate.getTodayDate();
 
-        var today = new Date();
-        var dd = today.getDate();
-        
-        var mm = today.getMonth()+1; 
-        var yyyy = today.getFullYear();
-        if(dd<10) 
-        {
-            dd='0'+dd;
-        } 
-        
-        if(mm<10) 
-        {
-            mm='0'+mm;
-        } 
-
-        today = dd+'/'+mm+'/'+yyyy;
         
         obj.acquired.push(today);
         obj.popularityIndex++;
 
-        await Product.updateOne({id : req.params.id}, obj, (err) =>{
+        await Product.updateOne({id : req}, obj, (err) =>{
             if(err) throw err;})
 
 
-        res.status(200).send('updated');
     }catch(err){
-        res.status(500).send(err);
+        console.log("Cant addDate");
     }
 }

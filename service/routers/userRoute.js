@@ -6,7 +6,7 @@ router.get('/getAll', userCtl.getData);
 
 router.get('/userGetByID/:id', userCtl.userGetByID);
 
-router.put('/updateUserProd/:id', userCtl.put_acceptToCart);
+router.put('/updateUserProd', userCtl.put_acceptToCart);
 
 router.post('/login', userCtl.Login)
 

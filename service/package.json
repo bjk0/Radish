@@ -5,7 +5,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
-    "dev":"nodemon index.js"
+    "dev": "nodemon index.js"
   },
   "author": "",
   "license": "ISC",
@@ -16,10 +16,12 @@
     "express": "^4.17.1",
     "express-session": "^1.17.0",
     "express-validator": "^6.3.1",
+    "jimp": "^0.9.3",
     "mongoose": "^5.8.9",
     "npm": "^6.13.6",
     "path": "^0.12.7",
     "qrcode": "^1.4.4",
+    "qrcode-reader": "^1.0.4",
     "route-async": "^1.0.7"
   },
   "devDependencies": {

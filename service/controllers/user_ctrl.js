@@ -1,8 +1,7 @@
 const User  = require('../models/user');
-
-var bodyParser = require('body-parser');
-const { check, validationResult } = require("express-validator");
-const bcrypt = require("bcryptjs");
+const dateGenerate = require('../createDate');
+const validationResult = require("express-validator");
+const prodCtrl = require('../controllers/product_ctrl')
 
 exports.getData = async (req, res) => {
     try {
@@ -65,76 +64,43 @@ exports.Login = async (req, res) => {
 exports.put_acceptToCart = async (req, res) => {
   try{
       var alg = 1;
-      var today = new Date();
-      var dd = today.getDate();
-      
-      var mm = today.getMonth()+1; 
-      var yyyy = today.getFullYear();
-      if(dd<10) 
-      {
-          dd='0'+dd;
-      } 
-      if(mm<10) 
-      {
-          mm='0'+mm;
-      }
-      today = dd+'/'+mm+'/'+yyyy;
-
+      var today = dateGenerate.getTodayDate();
       let u = req.body.user;
       let c = req.body.cart;
       
-    //  console.log(u.userProducts);
-     // console.log(c.productId);
-
       c.productId.forEach(element => { 
+        prodCtrl.addDate(element);
         u.userProducts.forEach(product =>{ 
-                                         //  console.log(product.prodId);
+                                        
           if (JSON.stringify(product.prodId) == JSON.stringify(element)){          
-          //  console.log(element);
             product.date.push(today);
-          //  console.log(u.userProducts);
           }
         });
-      const found = u.userProducts.find(p => JSON.stringify(p.prodId) == JSON.stringify(element));
-      if (typeof found === 'undefined'){ 
-        console.log("hello");
-        var text = '{"prodId":'+JSON.stringify(element)+',"algRating":'+alg+',"date":["'+today+'"]}';
-        let newProduct  = JSON.parse(text);
-          console.log("hello2");
-         // console.log(newProduct);
+        const found = u.userProducts.find(p => JSON.stringify(p.prodId) == JSON.stringify(element));
+        if (typeof found === 'undefined'){ 
+          var text = '{"prodId":'+JSON.stringify(element)+',"algRating":'+alg+',"date":["'+today+'"]}';
+          let newProduct  = JSON.parse(text);
           u.userProducts.push(newProduct);
-      }
-      
+        }
+
+
+
       });
+      let obj = await User.find({id : u.id}, (err) =>{if(err) throw err;});
+      if(obj.length == 0) throw {
+        message:   'no content' 
+      };
+      obj = obj[0];
 
+      obj.userProducts = u.userProducts;
+      obj.userCartHistory = u.userCartHistory
 
-      console.log(u);
-
-     let obj = await User.find({id : req.params.id}, (err) =>{if(err) throw err;});
-console.log(obj);
-    // if(obj.length == 0) throw {
-    //     message:   'no content' 
-    // };
-    // console.log(obj);
-    // obj = obj[0];
-    // obj = u;
-
-    await User.updateOne({id : req.params.id},obj, (err)=>{
-       if(err) throw err;
-   })
-
-      res.status(200).json(u);
+      await User.updateOne({id : u.id},obj, (err)=>{
+        if(err) throw err;
+      });
+      res.status(200).json(obj);
     }catch(err){
      res.status(500).send(err);
-} 
+    }  
 };
-    /*
-            app.get('/home', function(request, response) {
-                if (request.session.loggedin) {
-                    response.send('Welcome back, ' + request.session.username + '!');
-                } else {
-                    response.send('Please login to view this page!');
-                }
-                response.end();
-            });
-    */
+    
