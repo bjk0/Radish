@@ -5,6 +5,7 @@ const prodCtrl = require('../controllers/product_ctrl')
 
 exports.getData = async (req, res) => {
     try {
+        console.log(dateGenerate.getTodayDate());
         const docs = await User.find({});
         return res.json(docs);
    
@@ -56,10 +57,8 @@ exports.Login = async (req, res) => {
         message: "You are logged in!" // Add redirect
         });
       }
-}
+};
     
-
-
 
 exports.put_acceptToCart = async (req, res) => {
   try{
@@ -104,3 +103,38 @@ exports.put_acceptToCart = async (req, res) => {
     }  
 };
     
+
+// exports.getUserProducts = async (req, res) => {
+//   try {
+//     let docs = await User.find({id : req.body.id}, (err)=>{
+//       if(err) throw err;
+//     });
+//     docs = docs[0];
+// console.log(docs);
+//     //let freq;
+//     docs.userProducts.forEach(product => {
+//       //console.log(product.date);
+//        for(let i = 1;i < product.date.length; i++){
+        
+//            let date1 = new Date(product.date[i]);
+//          //  let date2 = new Date(product.date[i]);
+//            console.log(date1);
+//        }
+//           //  console.log(date1);
+//       //   }
+//         //   product.algRating = freq / product.date.length;
+
+//         //  console.log(product.algRating);
+//        });
+//     docs.userProducts.sort((a, b) =>{
+//       a.algRating - b.algRating
+//     })
+// //console.log(docs.userProducts);
+//     await User.updateOne({id : req.body.id},docs, (err)=>{
+//       if(err) throw err;
+//     });
+    
+// res.status(200).send(docs);
+//   }catch(err){
+//     res.status(500).send(err);
+//   } }

@@ -8,7 +8,9 @@ router.get('/userGetByID/:id', userCtl.userGetByID);
 
 router.put('/updateUserProd', userCtl.put_acceptToCart);
 
-router.post('/login', userCtl.Login)
+router.post('/login', userCtl.Login);
+
+// router.put('/algUpdate',userCtl.getUserProducts);
 
 
 
