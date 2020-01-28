@@ -10,6 +10,21 @@ exports.getData = async (req, res) => {
     } 
 };
 
+exports.getByID = async (req, res) =>  {
+    try {
+    const docs = await Cart.find({id : req.params.id}, (err)=>{
+        if(err) throw err;
+    });
+      
+    if(docs.length == 0) throw {
+        message: 'no content'
+    };
+    res.status(200).json(docs[0]);
+    }catch(err){
+     res.status(500).send(err);
+} 
+};
+
 exports.postCart = async (req,res) => {
     try{
         let obj = await Cart.find({id : req.body.id}, (err) =>{

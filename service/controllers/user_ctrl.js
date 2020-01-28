@@ -1,4 +1,4 @@
-const {User , UserProduct} = require('../models/user');
+const User  = require('../models/user');
 
 var bodyParser = require('body-parser');
 const { check, validationResult } = require("express-validator");
@@ -14,9 +14,9 @@ exports.getData = async (req, res) => {
     }  
 };
 
-exports.getByName = async (req, res) =>  {
+exports.userGetByID = async (req, res) =>  {
   try {
-  const docs = await User.find({email : req.body.userName}, (err)=>{
+  const docs = await User.find({id : req.params.id}, (err)=>{
       if(err) throw err;
   });
     
@@ -110,7 +110,7 @@ exports.put_acceptToCart = async (req, res) => {
 
       console.log(u);
 
-     let obj = await User.find({userName : req.params.userName}, (err) =>{if(err) throw err;});
+     let obj = await User.find({id : req.params.id}, (err) =>{if(err) throw err;});
 console.log(obj);
     // if(obj.length == 0) throw {
     //     message:   'no content' 
@@ -119,7 +119,7 @@ console.log(obj);
     // obj = obj[0];
     // obj = u;
 
-    await User.updateOne({userName : req.params.userName},obj, (err)=>{
+    await User.updateOne({id : req.params.id},obj, (err)=>{
        if(err) throw err;
    })
 

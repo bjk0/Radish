@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const product = {
-    id : {type: Number, index: 1 },
+    id :  Number,
     title : String,
     imageName : String,
     price :  Number,

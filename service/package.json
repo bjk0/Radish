@@ -4,7 +4,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node index.js",
+    "dev":"nodemon index.js"
   },
   "author": "",
   "license": "ISC",
@@ -18,6 +19,7 @@
     "mongoose": "^5.8.9",
     "npm": "^6.13.6",
     "path": "^0.12.7",
+    "qrcode": "^1.4.4",
     "route-async": "^1.0.7"
   },
   "devDependencies": {

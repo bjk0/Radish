@@ -4,11 +4,9 @@ const userCtl = require('../controllers/user_ctrl');
 
 router.get('/getAll', userCtl.getData);
 
+router.get('/userGetByID/:id', userCtl.userGetByID);
 
-router.get('/getByEmail:id', userCtl.getByName);
-
-router.put('/updateUserProd/:userName', userCtl.put_acceptToCart);
-
+router.put('/updateUserProd/:id', userCtl.put_acceptToCart);
 
 router.post('/login', userCtl.Login)
 

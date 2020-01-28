@@ -1,13 +1,9 @@
 const mongoose = require('mongoose');
-const consts = require('./consts');
 
-const { DB_HOST, DB_USER, DB_PASS } = consts;
-const url = "mongodb+srv://tomermizrachi:tomermizrachi@tmcluster-uqrdd.mongodb.net/RadishDB?retryWrites=true&w=majority";
+const url = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}/${process.env.DB_COLLECTION}?retryWrites=true&w=majority`;
 const options = {
  useNewUrlParser: true, // For deprecation warnings
  useCreateIndex: true, // For deprecation warnings
- user: DB_USER,
- pass: DB_PASS,
  useUnifiedTopology: true
 };
 
