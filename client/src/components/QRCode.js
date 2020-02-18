@@ -16,6 +16,7 @@ class QRCode extends Component {
     this.setState({
       result: data,
     })
+    
   }
   handleError(err){
     console.error(err)
@@ -38,5 +39,6 @@ class QRCode extends Component {
       </div>
     )
   }
-  
+
 }
+export default QRCode;

@@ -8,6 +8,7 @@ import { fade, makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import InvertColorsIcon from '@material-ui/icons/InvertColors';
+
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
@@ -29,8 +30,8 @@ const useStyles = makeStyles(theme => ({
     '&:hover': {
       backgroundColor: fade(theme.palette.common.white, 0.25),
     },
-    marginLeft: 0,
-    width: '100%',
+    marginLeft: 90,
+    width: '50%',
     [theme.breakpoints.up('sm')]: {
       marginLeft: theme.spacing(1),
       width: 'auto',
@@ -46,7 +47,7 @@ const useStyles = makeStyles(theme => ({
     justifyContent: 'center',
   },
   inputRoot: {
-    color: 'inherit',
+    color: '#fff',
   },
   inputInput: {
     padding: theme.spacing(1, 1, 1, 7),
@@ -66,7 +67,7 @@ export default function Header() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar style={{ position: "fixed", top: "0", width: "100%", backgroundColor: "#d81b60" }}>
         <Toolbar>
           <IconButton
             edge="start"
@@ -76,15 +77,15 @@ export default function Header() {
           >
             <MenuIcon />
           </IconButton>
-          <InvertColorsIcon/>
-          <Typography  className={classes.title} variant="h6" noWrap>
+          <InvertColorsIcon />
+          <Typography className={classes.title} variant="h6" noWrap>
             RADISH
           </Typography>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
-            <InputBase
+            <InputBase 
               placeholder="Search…"
               classes={{
                 root: classes.inputRoot,

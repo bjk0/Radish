@@ -5,7 +5,6 @@ const prodCtrl = require('../controllers/product_ctrl')
 
 exports.getData = async (req, res) => {
     try {
-        console.log(dateGenerate.getTodayDate());
         const docs = await User.find({});
         return res.json(docs);
    

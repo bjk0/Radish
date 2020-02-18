@@ -1,17 +1,22 @@
-
+import React from 'react';
 import LocalGroceryStoreIcon from '@material-ui/icons/LocalGroceryStore';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import StorefrontIcon from '@material-ui/icons/Storefront';
 import CropFreeIcon from '@material-ui/icons/CropFree';
-import React from 'react';
+import Container from '@material-ui/core/Container';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+import { BottomNavigation } from '@material-ui/core';
+import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import QRCode from './QRCode';
+import Store from './Store';
+import Cart from './Cart';
+import History from './History';
+
+
+
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -60,27 +65,26 @@ export default function SimpleTabs() {
 
   return (
     <div className={classes.root}>
-            <TabPanel value={value} index={0}>
-        Cart 
+      <Container disableGutters = "true" >
+      <TabPanel value={value} index={0}>
+        <Cart/>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        History
+        <History/>
           </TabPanel>
       <TabPanel value={value} index={2}>
-        Store
+        <Store />
       </TabPanel>
       <TabPanel value={value} index={3}>
-        <QRCode/>
-          </TabPanel>
-      <AppBar position="static">
-        <Tabs centered={true} value={value} onChange={handleChange} aria-label="simple tabs example">
-          <Tab label="CART" icon={<LocalGroceryStoreIcon />} {...a11yProps(0)} />
-          <Tab label="HISTORY" icon={<FavoriteIcon />} {...a11yProps(1)} />
-          <Tab label="STORE" icon={<StorefrontIcon />} {...a11yProps(2)} />
-          <Tab label="QR" icon={<CropFreeIcon />} {...a11yProps(3)} />
-
-        </Tabs>
-      </AppBar>
+        <QRCode />
+      </TabPanel>
+      </Container>
+      <BottomNavigation style={{ position: "fixed", bottom: "0", width: "100%", backgroundColor: "#d81b60" }} centered={true} value={value} onChange={handleChange} aria-label="simple tabs example">
+        <BottomNavigationAction label="CART" style={{ color: "#fff" }} icon={<LocalGroceryStoreIcon style={{ color: "#fff" }} />} {...a11yProps(0)} />
+        <BottomNavigationAction label="HISTORY" style={{ color: "#fff" }} icon={<FavoriteIcon style={{ color: "#fff" }} />} {...a11yProps(1)} />
+        <BottomNavigationAction label="STORE" style={{ color: "#fff" }} icon={<StorefrontIcon style={{ color: "#fff" }} />} {...a11yProps(2)} />
+        <BottomNavigationAction label="QR" style={{ color: "#fff" }} icon={<CropFreeIcon style={{ color: "#fff" }} />} {...a11yProps(3)} />
+      </BottomNavigation>
 
     </div>
   );

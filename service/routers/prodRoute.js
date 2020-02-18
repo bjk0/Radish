@@ -3,14 +3,14 @@ const router = require('express').Router();
 const productCtl = require('../controllers/product_ctrl');
 
 
-router.get('/getAll', productCtl.getData);
+router.get('/', productCtl.getData);
 
-router.get('/getByID/:id', productCtl.getByID);
+router.get('/:id', productCtl.getByID);
 
-router.post('/create', productCtl.postProduct);
+router.post('/', productCtl.postProduct);
 
-router.put('/update/:id', productCtl.putProduct);
+router.put('/:id', productCtl.putProduct);
 
-router.delete('/delete/:id', productCtl.deleteProduct);
+router.delete('/:id', productCtl.deleteProduct);
 
 module.exports = router;
