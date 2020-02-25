@@ -8,13 +8,7 @@ class PlusMinus extends Component {
         this.state = {
             amount: this.props.amount
         }
-
-         //this.increment = this.increment.bind(this);
-       // this.decrement = this.decrement.bind(this);
     };
-   
-
-   
     render() {
         return (
             <div>
@@ -36,7 +30,7 @@ class PlusMinus extends Component {
                     </div>
                 </div>
             </div>
-        );
+        )
     }
 }
 export default PlusMinus;

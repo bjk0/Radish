@@ -7,9 +7,6 @@ import CardMedia from '@material-ui/core/CardMedia';
 import PlusMinus from './PlusMinus'
 import Button from '@material-ui/core/Button';
 export class Item extends Component {
-
-    
-
     state = {
         plusMinus: this.props.plusMinus,
         id: this.props.product.id,
@@ -23,13 +20,13 @@ export class Item extends Component {
     render() {
         if (this.props.plusMinus === "true") {
             return (
-                        
+
                 <Container disableGutters={true}>
                     <Card style={{ width: "95%", hight: "100%" }}>
                         <Typography fontFamily="roboto" variant="h5" style={{ margin: "10%", marginBottom: "0" }}> {this.state.firstTitle} </Typography>
-                        <CardHeader subheader={this.state.price + " $"}  />
-                        <CardMedia> <img alt="thisImage" src={require('../static/images/'+ this.state.imageName)} style={{ width: "90%", padding: "1px" }} /> </CardMedia>
-                        <PlusMinus decAmount={this.props.decAmount} incAmount = {this.props.incAmount} id = {this.state.id} amount = {this.props.cartItem.amount}/>
+                        <CardHeader subheader={this.state.price + " $"} />
+                        <CardMedia> <img alt="thisImage" src={require('../static/images/' + this.state.imageName)} style={{ width: "90%", padding: "1px" }} /> </CardMedia>
+                        <PlusMinus decAmount={this.props.decAmount} incAmount={this.props.incAmount} id={this.state.id} amount={this.props.cartItem.amount} />
                     </Card>
                 </Container>
             )
@@ -40,7 +37,7 @@ export class Item extends Component {
                     <Card style={{ width: "95%", hight: "100%" }}>
                         <Typography fontFamily="roboto" variant="h5" style={{ margin: "10%", marginBottom: "0" }}> {this.state.firstTitle} </Typography>
                         <CardHeader subheader={this.state.price + " $"} />
-                        <CardMedia> <img alt="thisImage" src={require('../static/images/'+ this.state.imageName)} style={{ width: "90%", padding: "1px" }} /> </CardMedia>
+                        <CardMedia> <img alt="thisImage" src={require('../static/images/' + this.state.imageName)} style={{ width: "90%", padding: "1px" }} /> </CardMedia>
                         <Button onClick={this.props.addToCartItem.bind(this, this.props.product.id)}
                             variant="outlined"
                             style={{ marginLeft: "10%", borderColor: "#1BD893", color: "#1BD893" }}
