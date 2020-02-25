@@ -7,15 +7,20 @@ class QRCode extends Component {
     super(props)
     this.state = {
       delay: 100,
-      result: 'No result',
+      result: "",
     }
  
     this.handleScan = this.handleScan.bind(this)
   }
-  handleScan(data){
-    this.setState({
-      result: data,
-    })
+  handleScan = (data) => {
+    data = parseInt(data);
+    if (data !== this.state.result&&data){
+      this.setState({
+        result: data,
+      })
+      console.log(data);
+      this.props.addToBody(data); 
+    }
     
   }
   handleError(err){
@@ -23,6 +28,8 @@ class QRCode extends Component {
   }
   render(){
     const previewStyle = {
+      paddingTop: "30%",
+      paddingBottom: "30%",
       height: 240,
       width: 320,
     }
@@ -37,6 +44,14 @@ class QRCode extends Component {
           />
         <p>{this.state.result}</p>
       </div>
+
+        //   <div className={classes.root}>
+        //   <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+        //     <Alert onClose={handleClose} severity="success">
+        //       This is a success message!
+        //     </Alert>
+        //   </Snackbar>
+        // </div>
     )
   }
 

@@ -6,32 +6,19 @@ class PlusMinus extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            count: 1
+            amount: this.props.amount
         }
 
-        this.increment = this.increment.bind(this);
-        this.decrement = this.decrement.bind(this);
+         //this.increment = this.increment.bind(this);
+       // this.decrement = this.decrement.bind(this);
     };
+   
 
-    increment() {
-        let count = this.state.count
-        count++;
-        this.setState({ count });
-    }
-
-    decrement() {
-        let count = this.state.count
-
-        if (count > 0) { count-- };
-
-        this.setState({ count });
-
-    }
-
+   
     render() {
         return (
             <div>
-                <Typography>&nbsp; &nbsp; &nbsp;{this.state.count}</Typography>
+                <Typography>&nbsp; &nbsp; &nbsp;{this.props.amount}</Typography>
 
                 <div className="container text-center class-width" style={{ padding: "5px" }}>
                     <div className="card">
@@ -41,9 +28,8 @@ class PlusMinus extends Component {
                                     position: "relative",
                                     left: "0"
                                 }}>
-                                    <IndeterminateCheckBoxIcon type="button" fontSize="large" style={{ color: "#d81b60" }} className="btn" onClick={this.decrement}> </IndeterminateCheckBoxIcon>
-                                    <AddBoxIcon type="button" fontSize="large" style={{ color: "#d81b60" }} className="btn" onClick={this.increment}> </AddBoxIcon>
-
+                                    <IndeterminateCheckBoxIcon type="button" fontSize="large" style={{ color: "#1BD893" }} className="btn" onClick={this.props.decAmount.bind(this, this.props.id)}> </IndeterminateCheckBoxIcon>
+                                    <AddBoxIcon type="button" fontSize="large" style={{ color: "#1BD893" }} className="btn" onClick={this.props.incAmount.bind(this, this.props.id)} > </AddBoxIcon>
                                 </div>
                             </div>
                         </div>

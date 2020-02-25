@@ -52,6 +52,8 @@ exports.postCart = async (req,res) => {
 
         today = dd+'/'+mm+'/'+yyyy;
 
+
+        
         let c = new Cart(
             {
                 id: req.body.id,
@@ -60,6 +62,11 @@ exports.postCart = async (req,res) => {
                 date:  today
             }
         );
+        req.body.cart.forEach(element => {
+        for (let index = 0; index < element.amount; index++) {
+            c.productId.push(element.id)
+        }            
+        });
         c.save();
         res.send('cart created successfully');
     }catch(err){
