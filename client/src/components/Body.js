@@ -12,7 +12,6 @@ import History from './History';
 import { BottomNavigation } from '@material-ui/core';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import Fab from "@material-ui/core/Fab";
-import {axios} from 'axios';
 
 class Body extends Component {
 
@@ -22,7 +21,7 @@ class Body extends Component {
     this.handleMenuClick2 = this.handleMenuClick2.bind(this);
     this.handleMenuClick3 = this.handleMenuClick3.bind(this);
     this.handleMenuClick4 = this.handleMenuClick4.bind(this);
- 
+    this.handleCheckout = this.handleCheckout.bind(this);
   }
   state = {
     pageNumber: 1,
@@ -67,7 +66,7 @@ class Body extends Component {
   incAmount = (id) => {
     console.log(id);
     var stateCopy = Object.assign({}, this.state);
-    stateCopy.cart.forEach((element,index) =>{
+    stateCopy.cart.forEach((element) =>{
       if (element.id === id){
         element.amount++;
         this.setState(stateCopy);
@@ -77,7 +76,7 @@ class Body extends Component {
   decAmount = (id) => {
     console.log(id);
     var stateCopy = Object.assign({}, this.state);
-    stateCopy.cart.forEach((element,index) =>{
+    stateCopy.cart.forEach((element) =>{
       if (element.id === id){
         if(element.amount > 0)
           element.amount--;
@@ -85,18 +84,15 @@ class Body extends Component {
       }
     });
   }
-  handleCheckout = () =>{
+  handleCheckout=()=>{
 
-    axios.post("http://ec2-3-126-85-150.eu-central-1.compute.amazonaws.com:3001/carts/create", {
-      id: 300,
-      cart: this.state.cart
+    fetch('http://ec2-3-126-85-150.eu-central-1.compute.amazonaws.com:3001/carts/create', {
+      method: 'POST',
+      body: JSON.stringify({
+        id: 300,
+        cart: this.state.cart,
+      })
     })
-    .then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
 
 
   }

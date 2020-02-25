@@ -27,7 +27,7 @@ exports.getByID = async (req, res) =>  {
 
 exports.postCart = async (req,res) => {
     try{
-        let obj = await Cart.find({id : req.body.id}, (err) =>{
+        let obj = await Cart.find({id : req.id}, (err) =>{
             if(err) throw err;
         });
 
@@ -56,13 +56,13 @@ exports.postCart = async (req,res) => {
         
         let c = new Cart(
             {
-                id: req.body.id,
+                id: req.id,
                 productId : [],
                 state : 0,
                 date:  today
             }
         );
-        req.body.cart.forEach(element => {
+        req.cart.forEach(element => {
         for (let index = 0; index < element.amount; index++) {
             c.productId.push(element.id)
         }            
